@@ -41,10 +41,10 @@ public class ViDuDoPost extends HttpServlet {
 		String value1 = request.getParameter("fname");
 		String value2 = request.getParameter("lname");
 		PrintWriter traVe = response.getWriter();
-		traVe.append("Bạn vừa yêu cầu dạng POST, đây là đáp ứng của tôi!");
-		traVe.append("\nGiá trị tham số fname = ");
+		traVe.append("Bạn vừa yêu cầu dạng POST, đây là đáp ứng của tôi!<br>");
+		traVe.append("Giá trị tham số fname = ");
 		traVe.append(value1);
-		traVe.append("\nGiá trị tham số lname = ");
+		traVe.append("<br>Giá trị tham số lname = ");
 		traVe.append(value2);
 				
 	}
