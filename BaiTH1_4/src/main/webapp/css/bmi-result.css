@@ -1,0 +1,583 @@
+:root {
+    --primary-blue: #1e88e5;
+    --primary-dark: #1565c0;
+    --primary-light: #42a5f5;
+    --accent-blue: #00b0ff;
+    --success-green: #00c853;
+    --warning-orange: #ff9800;
+    --danger-red: #f44336;
+    --bg-gradient-start: #e3f2fd;
+    --bg-gradient-end: #f5f9fc;
+    --text-primary: #1a237e;
+    --text-secondary: #546e7a;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(30, 136, 229, 0.08);
+    --shadow-md: 0 8px 24px rgba(30, 136, 229, 0.12);
+    --shadow-lg: 0 16px 48px rgba(30, 136, 229, 0.16);
+    --border-radius: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Decoration */
+.background-decoration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(30, 136, 229, 0.08) 0%, rgba(66, 165, 245, 0.04) 100%);
+    animation: float 25s infinite ease-in-out;
+}
+
+.circle-1 {
+    width: 600px;
+    height: 600px;
+    top: -300px;
+    right: -200px;
+}
+
+.circle-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -150px;
+    left: -150px;
+    animation-delay: 7s;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(180deg, transparent 0%, rgba(30, 136, 229, 0.03) 100%);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.3;
+    }
+    33% {
+        transform: translate(30px, -30px) rotate(120deg);
+        opacity: 0.5;
+    }
+    66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+        opacity: 0.4;
+    }
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 48px 40px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container.loaded {
+    animation: none;
+}
+
+/* Header */
+.result-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.status-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--success-green) 0%, #00e676 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
+    animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s backwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.status-icon svg {
+    width: 40px;
+    height: 40px;
+    color: var(--white);
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.result-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* BMI Score Section */
+.bmi-score-section {
+    text-align: center;
+    padding: 32px;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, #ffffff 100%);
+    border-radius: 20px;
+    margin-bottom: 32px;
+    border: 2px solid #e3f2fd;
+}
+
+.score-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.score-value {
+    margin-bottom: 20px;
+}
+
+.score-number {
+    font-size: 72px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    display: inline-block;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--success-green) 0%, #00e676 100%);
+    color: var(--white);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 4px 16px rgba(0, 200, 83, 0.25);
+}
+
+/* BMI Chart */
+.bmi-chart {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.chart-bar {
+    display: flex;
+    height: 60px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
+
+.bar-segment {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.bar-segment:hover {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.bar-segment.underweight {
+    background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%);
+}
+
+.bar-segment.normal {
+    background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+}
+
+.bar-segment.overweight {
+    background: linear-gradient(135deg, #ffb74d 0%, #ffa726 100%);
+}
+
+.bar-segment.obese {
+    background: linear-gradient(135deg, #ef5350 0%, #f44336 100%);
+}
+
+.segment-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.segment-range {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.chart-indicator {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+}
+
+.indicator-arrow {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Health Info */
+.health-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--bg-gradient-start) 100%);
+    border-radius: 16px;
+    border: 2px solid #e3f2fd;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.info-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--white);
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Recommendation Section */
+.recommendation-section {
+    margin-bottom: 32px;
+}
+
+.recommendation-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.recommendation-card {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
+    border-radius: 16px;
+    border-left: 4px solid var(--warning-orange);
+}
+
+.recommendation-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--warning-orange) 0%, #ffb74d 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.recommendation-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--white);
+}
+
+.recommendation-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 16px 24px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    box-shadow: 0 4px 16px rgba(30, 136, 229, 0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30, 136, 229, 0.35);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-gradient-start);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary svg,
+.btn-secondary svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 32px 24px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .score-number {
+        font-size: 56px;
+    }
+    
+    .health-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-bar {
+        height: 80px;
+    }
+    
+    .segment-label {
+        font-size: 10px;
+    }
+    
+    .segment-range {
+        font-size: 8px;
+    }
+    
+    .recommendation-card {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 400px) {
+    .score-number {
+        font-size: 48px;
+    }
+    
+    .bmi-score-section {
+        padding: 24px;
+    }
+    
+    .info-item {
+        padding: 16px;
+    }
+    
+    .bar-segment {
+        padding: 4px 2px;
+    }
+    
+    .segment-label {
+        font-size: 9px;
+    }
+    
+    .segment-range {
+        display: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .background-decoration {
+        display: none;
+    }
+    
+    .action-buttons {
+        display: none;
+    }
+    
+    .container {
+        box-shadow: none;
+        max-width: 100%;
+    }
+}
+
+/* Animation Delays for Sections */
+.result-header {
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.bmi-score-section {
+    animation: fadeInUp 0.6s ease-out 0.4s backwards;
+}
+
+.bmi-chart {
+    animation: fadeInUp 0.6s ease-out 0.6s backwards;
+}
+
+.health-info {
+    animation: fadeInUp 0.6s ease-out 0.8s backwards;
+}
+
+.recommendation-section {
+    animation: fadeInUp 0.6s ease-out 1s backwards;
+}
+
+.action-buttons {
+    animation: fadeInUp 0.6s ease-out 1.2s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

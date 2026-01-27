@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Chỉ Số BMI</title>
+    <link rel="stylesheet" href="css/bmi-form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="icon-wrapper">
+                <svg class="health-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h1>Tính Chỉ Số BMI</h1>
+            <p class="subtitle">Kiểm tra sức khỏe của bạn ngay hôm nay</p>
+        </div>
+
+        <form action="BMI" method="post" class="bmi-form">
+            <div class="form-group">
+                <label for="height">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2v20M8 6l4-4 4 4M8 18l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Chiều cao
+                </label>
+                <div class="input-wrapper">
+                    <input type="number" step="0.01" name="height" id="height" placeholder="Nhập chiều cao" required>
+                    <span class="unit">m</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Cân nặng
+                </label>
+                <div class="input-wrapper">
+                    <input type="number" step="0.1" name="weight" id="weight" placeholder="Nhập cân nặng" required>
+                    <span class="unit">kg</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="standard">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Chuẩn BMI
+                </label>
+                <div class="select-wrapper">
+                    <select name="standard" id="standard">
+                        <option value="asia">Châu Á</option>
+                        <option value="who">Quốc tế (WHO)</option>
+                    </select>
+                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">Tính BMI</span>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </form>
+
+    </div>
+
+    <script>
+        // Add smooth animation on form load
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            container.classList.add('loaded');
+            
+            // Add floating animation to circles
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach((circle, index) => {
+                circle.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+
+        // Add focus effect to inputs
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.closest('.input-wrapper, .select-wrapper').classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.closest('.input-wrapper, .select-wrapper').classList.remove('focused');
+            });
+        });
+    </script>
+</body>
+</html>
