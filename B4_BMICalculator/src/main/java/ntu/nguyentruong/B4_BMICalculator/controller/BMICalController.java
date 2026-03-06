@@ -13,7 +13,7 @@ public class BMICalController {
 	public String nhapBMI() {
 		return "form";
 	}
-	@PostMapping("/tinhBMI")
+	@PostMapping("/")
 	public String tinhBMI(HttpServletRequest thamso ,ModelMap m) {
 		String weight = thamso.getParameter("w");
 		String height = thamso.getParameter("h");
