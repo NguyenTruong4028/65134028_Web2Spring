@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Danh sách các bài viết</title>
+</head>
+<body>
+	<table border = "1">
+		<thead>
+	        <tr>
+	            <th>id</th>
+	            <th>Title</th>
+	            <th>Category ID</th>
+	            <th>[view][edit][delete]</th>
+	        </tr>
+    	</thead>
+	    <tbody>
+	        <tr th:each="ps:${lsPost}">
+	            <td th:text="${ps.id}"></td>
+	            <td th:text="${ps.title}"></td>
+	            <td th:text="${ps.categoryId}"></td>
+	            <td></td>
+	        </tr>
+	    </tbody>
+	</table>
+</body>
+</html>
