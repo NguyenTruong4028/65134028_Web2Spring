@@ -7,7 +7,9 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
 import ntu.nguyentruong.ntuCMS.models.Page;
 import ntu.nguyentruong.ntuCMS.models.Post;
 
@@ -42,6 +44,21 @@ public class HomeController {
 	public String getdanhsachPost(ModelMap m) {
 		m.addAttribute("lsPost", dsBaiViet);		
 		return "posts";
+	}
+	@GetMapping("/page/new")
+	public String createPage() {
+		return "news";
+	}
+	@PostMapping("/page/new")
+	public String addPage(ModelMap m, HttpServletRequest ts) {
+		String id = ts.getParameter("id");
+		String pageName = ts.getParameter("pName");
+		String keyword = ts.getParameter("key");
+		String content = ts.getParameter("nd");
+		String parentId = ts.getParameter("parent");
+		dsTrang.add(new Page(id,pageName,keyword,content,parentId));
+		m.addAttribute("lsPage", dsTrang);
+		return "pages";
 	}
 	
 }
