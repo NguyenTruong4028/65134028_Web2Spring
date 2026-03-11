@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -22,7 +23,6 @@
 }
 
 /* HEADER */
-
 .header{
     display:flex;
     justify-content:space-between;
@@ -31,22 +31,7 @@
     padding:10px;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.logo img{
-    width:50px;
-}
-
-.username{
-    font-size:18px;
-}
-
 /* MAIN */
-
 .main{
     flex:1;
     display:flex;
@@ -81,10 +66,29 @@
 
 .content{
     flex:1;
+    padding:30px;
+}
+
+/* STUDENT INFO */
+
+.student{
     display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
+    gap:40px;
+    align-items:flex-start;
+}
+
+.student img{
+    width:180px;
+    border:1px solid black;
+}
+
+.info table{
+    border-collapse:collapse;
+}
+
+.info td{
+    padding:8px 15px;
+    font-size:18px;
 }
 
 /* FOOTER */
@@ -92,8 +96,9 @@
 .footer{
     text-align:center;
     border-top:1px solid black;
-    padding:8px;
+    padding:10px;
 }
+
 </style>
 <body>
 
@@ -108,7 +113,7 @@
             </div>
         </div>
 
-        <div class="username">[UserName]</div>
+        <div class="username">[Nguyễn Hồng Trường]</div>
     </div>
 
     <!-- Main -->
@@ -127,7 +132,49 @@
 
         <!-- Content -->
         <div class="content">
-            Content
+			<div class="student">
+
+                <!-- ẢNH -->
+                <div class="avatar">
+                    <img src="../imgs/anh.jpg" alt="student">
+                </div>
+
+                <!-- THÔNG TIN -->
+                <div class="info">
+                    <table>
+                        <tr>
+                            <td><b>Mã số sinh viên:</b></td>
+                            <td>63131234</td>
+                        </tr>
+                        <tr>
+                            <td><b>Họ tên sinh viên:</b></td>
+                            <td>Nguyễn Hồng Trường</td>
+                        </tr>
+                        <tr>
+                            <td><b>Niên khóa:</b></td>
+                            <td>2023 - 2027</td>
+                        </tr>
+                        <tr>
+                            <td><b>Ngành học:</b></td>
+                            <td>Công nghệ thông tin</td>
+                        </tr>
+                        <tr>
+                            <td><b>Lớp:</b></td>
+                            <td>65.CNTT-CLC</td>
+                        </tr>
+                        <tr>
+                            <td><b>Email:</b></td>
+                            <td>truong.nh.65cntt@ntu.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><b>Số điện thoại:</b></td>
+                            <td>0123456789</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+		
         </div>
 
     </div>
