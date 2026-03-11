@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Thêm trang mới</title>
+<title>Thêm bài viết mới</title>
 </head>
 <body>
-	<h2>Add New Page</h2>
+	<h2>Thêm bài viết</h2>
 
-	<form action="/page/new" method="post">
+	<form action="/post/new" method="post">
 	
 		<table>
 		
@@ -19,16 +19,9 @@
 			</tr>
 			
 			<tr>
-			    <td>Page Name</td>
+			    <td>Title</td>
 			    <td>
-			        <input type="text" name="pName">
-			    </td>
-			</tr>
-			
-			<tr>
-			    <td>Keyword</td>
-			    <td>
-			        <input type="text" name="key">
+			        <input type="text" name="tieude">
 			    </td>
 			</tr>
 			
@@ -40,12 +33,17 @@
 			</tr>
 			
 			<tr>
-			    <td>Parent Page ID</td>
+			    <td>Category ID</td>
 			    <td>
-			        <input type="text" name="parent">
+			        <input type="text" name="loai">
 			    </td>
 			</tr>
-			
+			<tr>
+			    <td>Image</td>
+			    <td>
+			        <input type="text" name="anh">
+			    </td>
+			</tr>
 			<tr>
 			    <td></td>
 			    <td>

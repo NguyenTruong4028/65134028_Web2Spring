@@ -60,5 +60,20 @@ public class HomeController {
 		m.addAttribute("lsPage", dsTrang);
 		return "pages";
 	}
+	@GetMapping("/post/new")
+	public String createPost() {
+		return "addpost";
+	}
+	@PostMapping("/post/new")
+	public String addPost(ModelMap m, HttpServletRequest ts) {
+		String id = ts.getParameter("id");
+		String title = ts.getParameter("tieude");
+		String content = ts.getParameter("nd");
+		String categoryId = ts.getParameter("loai");
+		String img = ts.getParameter("anh");
+		dsBaiViet.add(new Post(id,title,content,categoryId,img));
+		m.addAttribute("lsPost", dsBaiViet);
+		return "posts";
+	}
 	
 }
