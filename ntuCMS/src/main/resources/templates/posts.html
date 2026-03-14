@@ -16,20 +16,20 @@
 	        </tr>
     	</thead>
 	    <tbody>
-	        <tr th:each="ps:${lsPost}">
+	        <tr th:each="ps : ${lsPost}">
 	            <td th:text="${ps.id}"></td>
 	            <td th:text="${ps.title}"></td>
 	            <td th:text="${ps.categoryId}"></td>
 	         	<td>
-				    <a th:href="@{/page/view/{id}(id=${p.id})}">
+				    <a>
 				        <i class="fa fa-eye"></i>
 				    </a>
 				
-				    <a th:href="@{/page/edit/{id}(id=${p.id})}">
+				    <a>
 				        <i class="fa fa-pen"></i>
 				    </a>
 				
-				    <a th:href="@{/page/delete/{id}(id=${p.id})}">
+				    <a>
 				        <i class="fa fa-trash"></i>
 				    </a>
 				</td>
