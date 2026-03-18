@@ -1,8 +1,29 @@
 package ntu.nguyentruong.ntuCMS.models;
 
-public class Page {
-	String id, pageName, keyword, content, parentPageId;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table (name = "pages")
+public class Page {
+	 @Id
+	 @Column(name = "id")
+	 private String id;
+	 
+	 @Column(name = "page_name")
+	 private String pageName;
+	 
+	 @Column(name = "keyword")
+	 private String keyword;
+	 
+	 @Column(name = "content")
+	 private String content;
+	 
+	 @Column(name = "parent_page_id")
+	 private String parentPageId;
+	
 	public Page(String id, String pageName, String keyword, String content, String parentPageId) {
 		this.id = id;
 		this.pageName = pageName;
