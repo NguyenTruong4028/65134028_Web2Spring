@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ntu.nguyentruong.ntuCMS_Practice.models.Page;
 import ntu.nguyentruong.ntuCMS_Practice.services.PageService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
@@ -22,19 +21,28 @@ public class PageController {
 	@GetMapping("/all")
 	public String list(ModelMap m) {
 		m.addAttribute("pages", pService.getAllPages());
-		return "page/list";
+		
+		m.addAttribute("content", "page/list :: content");
+		
+		return "dashboard";
 	}
 	
 	@GetMapping("/view/{id}")
 	public String viewById(@PathVariable("id") String id, ModelMap m) {
 		m.addAttribute("view", pService.getById(id));
-		return "page/view";
+		
+		m.addAttribute("content", "page/view :: content");
+		
+		return "dashboard";
 	}
 	
 	@GetMapping("/new")
 	public String addPage(ModelMap m) {
 		m.addAttribute("add", new Page());
-		return "page/new";
+		
+		m.addAttribute("content", "page/new :: content");
+		
+		return "dashboard";
 	}
 	
 	@PostMapping("/save")
@@ -46,7 +54,7 @@ public class PageController {
 	@GetMapping("/delete/{id}")
 	public String delById(@PathVariable("id") String id) {
 		pService.delPage(id);
-		return "page/delete";
+		 return "redirect:/page/all"; 
 	}
 }
 

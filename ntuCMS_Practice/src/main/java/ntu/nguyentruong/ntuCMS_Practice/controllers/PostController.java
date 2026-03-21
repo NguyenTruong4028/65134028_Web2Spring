@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ntu.nguyentruong.ntuCMS_Practice.models.Page;
 import ntu.nguyentruong.ntuCMS_Practice.models.Post;
 import ntu.nguyentruong.ntuCMS_Practice.services.PostService;
 
@@ -45,6 +44,6 @@ public class PostController {
 	@GetMapping("/delete/{id}")
 	public String delById(@PathVariable("id") String id) {
 		service.delPost(id);
-		return "post/delete";
+		 return "redirect:/page/all"; 
 	}
 }
